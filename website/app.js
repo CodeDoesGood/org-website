@@ -12,6 +12,7 @@ var logger       = require('morgan');
 var bodyParser   = require('body-parser');
 var errorHandler = require('errorhandler');
 var path         = require('path');
+var swig         = require('swig');
 
 
 /**
@@ -28,6 +29,15 @@ var initApp = function (modules) {
    * Morgan - HTTP request logger
    */
   app.use(logger('dev'));
+
+  /**
+   * Template Engine - Swig
+   */
+  app.engine('html', swig.renderFile);
+  app.set('view engine', 'html');
+  app.set('views', __dirname + '/views');
+
+  app.set('view cache', false);
 
   /**
    * Body Parser + Multer

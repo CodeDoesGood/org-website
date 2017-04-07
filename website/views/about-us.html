@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block title %} CodeDoesGood - About Us{% endblock %}
+
+{% block body %}
+  <ul>
+  {% for person in people %}
+    <li>{{ person }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

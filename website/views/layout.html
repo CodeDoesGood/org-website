@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+        <h1>{% block title %}{% endblock %}</h1>
+        {% block header %}{% endblock %}
+        <nav>
+            <ul>
+                <li><a href="/">Home Page</a></li>
+                <li><a href="/about-us">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section role="main">
+        {% block body %}{% endblock %}
+    </section>
+  </body>
+</html>
