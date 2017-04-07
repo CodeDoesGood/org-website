@@ -42,7 +42,7 @@ const initApp = (modules) => {
   /**
    * Template Engine - Swig
    */
-  app.use(express.static('public'));
+  app.use(express.static(path.join(__dirname, 'public')));
 
   /**
    * Body Parser + Multer
