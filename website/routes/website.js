@@ -24,6 +24,15 @@ module.exports = (app) => {
   });
 
   /**
+   * Portfolio
+   */
+  app.get('/portfolio', (req, res) => {
+    const routeContext = {};
+
+    res.render('portfolio', _.assign(layoutContext, routeContext));
+  });
+
+  /**
    * About Us
    */
   app.get('/about-us', (req, res) => {
