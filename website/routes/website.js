@@ -51,4 +51,18 @@ module.exports = (app) => {
 
     res.render('team', _.assign(layoutContext, routeContext));
   });
+
+  /**
+   * Contact Us
+   */
+  app.get('/contact-us', (req, res) => {
+    const routeContext = {};
+
+    res.render('contact-us', _.assign(layoutContext, routeContext));
+  });
+  // app.post('/contact-us', (req, res) => {
+  //   // do cool stuff with the form data...
+  // });
+
+
 }
