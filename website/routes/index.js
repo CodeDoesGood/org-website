@@ -4,6 +4,6 @@
  * @module website/routes
  */
 
-module.exports = function (app) {
+module.exports = (app) => {
   require('./website')(app);
 };

@@ -18,13 +18,13 @@ var swig         = require('swig');
 /**
  * Express App instance
  */
-var app = express();
+const app = express();
 
 /**
  * Module dependencies are all injected under `app.locals.modules`
  * so it's safe to bootstrap the app
  */
-var initApp = function (modules) {
+const initApp = (modules) => {
   /**
    * Morgan - HTTP request logger
    */
@@ -65,7 +65,7 @@ var initApp = function (modules) {
 /**
  * Expose Website Express App
  */
-module.exports = function (modules) {
+module.exports = (modules) => {
   _.assign(app.locals, modules);
 
   initApp();

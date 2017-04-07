@@ -1,18 +1,18 @@
 /**
  * Dependencies
  */
-var express = require('express');
+const express = require('express');
 
 /**
  * Server App instance
  */
-var app = express();
+const app = express();
 app.set('port', process.env.PORT || 3000);
 
 /**
 * Website App Instance
 */
-var websiteApp = require('./website/app')({});
+const websiteApp = require('./website/app')({});
 
 /**
 * Mount Website App on the Server instance
