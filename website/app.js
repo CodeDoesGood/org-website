@@ -36,8 +36,13 @@ const initApp = (modules) => {
   app.engine('html', swig.renderFile);
   app.set('view engine', 'html');
   app.set('views', __dirname + '/views');
-
+  //TODO: enable cache on production
   app.set('view cache', false);
+
+  /**
+   * Template Engine - Swig
+   */
+  app.use(express.static('public'));
 
   /**
    * Body Parser + Multer
