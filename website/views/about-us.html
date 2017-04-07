@@ -1,11 +1,64 @@
 {% extends 'layout.html' %}
 
-{% block title %} CodeDoesGood - About Us{% endblock %}
+{% block title %} CodeDoesGood - About Us {% endblock %}
 
-{% block body %}
-  <ul>
-  {% for person in people %}
-    <li>{{ person }}</li>
-  {% endfor %}
-  </ul>
+{% block content %}
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">About</h2>
+                <h3 class="section-subheading text-muted">We are a volunteer run group of (mostly) developers who are committed to using our technical skills to help others through our mission: <strong>To harness the cognitive surplus of the tech community towards building solutions to real problems in the world</strong></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image">
+                            <!-- <img class="img-circle img-responsive" src="img/about/3.jpg" alt=""> -->
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>2015</h4>
+                                <h4 class="subheading">#palm-dates</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">It all started in 2015, when Abbey, Shahin, Massimo, and Renato started meeting regularly (bi-weekly) to hangout and drink Palm Bay! We then named our event Palm Dates.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <!-- <img class="img-circle img-responsive" src="img/about/4.jpg" alt=""> -->
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>2016</h4>
+                                <h4 class="subheading">A Future Project...</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">We talked for a year about how we wanted to do a project together, all the while also talking about world issues. What if we could work on projects together while solving real problems in the world?</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image">
+                            <!-- <img class="img-circle img-responsive" src="img/about/4.jpg" alt=""> -->
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>2017</h4>
+                                <h4 class="subheading">CodeDoesGood: Our First Cause!</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Our first project was a list of lawyers for refugees and families and sponsors of refugees detained at airports as part of the US Government's executive order (also known as "The Muslim Ban"). One Sunday one of us approached the group with the idea and within 3 days a list was published and the names were being populated.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
