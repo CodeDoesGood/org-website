@@ -1,0 +1,16 @@
+
+
+/**
+  Branding
+*/
+
+.navbar-custom .navbar-brand {
+  font-family: "Source Code Pro", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+
+/**
+  Team
+*/
+.team-member img {
+  width: 200px;
+}
