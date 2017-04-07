@@ -42,4 +42,13 @@ module.exports = (app) => {
 
     res.render('about-us', _.assign(layoutContext, routeContext));
   });
+
+  /**
+   * Team
+   */
+  app.get('/team', (req, res) => {
+    const routeContext = {};
+
+    res.render('team', _.assign(layoutContext, routeContext));
+  });
 }
