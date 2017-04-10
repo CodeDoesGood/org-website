@@ -2,7 +2,65 @@
 
 {% block title %} CodeDoesGood - About Us {% endblock %}
 
+{% block header %}
+<header>
+    <div class="container">
+        <div class="intro-text compact">
+            <div class="intro-lead-in">
+              <strong>Our mission</strong> is to <strong>harness</strong> the <em>cognitive surplus</em> of the tech community towards <strong>building solutions</strong> to real problems in the <strong>world</strong>.
+            </div>
+        </div>
+        <div class="intro-img-credits">Photo by <a href="https://unsplash.com/@bragekorsnes" target="_blank">@bragekorsnes</a></div>
+    </div>
+</header>
+{% endblock %}
+
 {% block content %}
+
+<section id="about">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+              <h2>Who Are We</h2>
+
+              <p>We are a volunteer run group of (mostly) developers who are committed to using our technical skills to help others through our mission:</p>
+
+              <blockquote>
+                <p>To harness the cognitive surplus of the tech community towards building solutions to real problems in the world.</p>
+              </blockquote>
+
+              <p>Read about the <a href="https://github.com/CodeDoesGood/org/wiki/2.-Dev-Hatchery" target="_blank">Dev Hatchery</a>, the fantastic training ground which allows us to accomplish some amazing things!</p>
+
+              <h3>Join Us</h3>
+
+              <p>We will never run out of a need for volunteers. The more volunteers we have, the more solutions we can develop.</p>
+              <p>We need developers of all skill levels and all platforms, mentors, designers, marketing, human resources, administrative...basically no matter what you do if you want to join us we will find a place for you.</p>
+
+              <a href="https://github.com/CodeDoesGood/org/wiki/2.-Volunteering" target="_blank">Click here for more info</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Our Story</h2>
+
+            <p>CodeDoesGood was founded by 4 developers in Vancouver, BC Canada. Four skin tones, four races, four nationalities, four languages, four very different life experiences.</p>
+            <p>Our compiled life experiences mean at least one of us has first-hand experience of poverty, mental health issues, wildlife rescue, racism, international schooling, community arts, natural disasters, landing as a refugee, education, suicide, multi-ethnic families, fleeing violence, protesting, learning a new language, physical rehabilitation, immigration, ecological issues...</p>
+            <p>We have each seen and understood the world in individual ways and we each have different motivating values but deep down we do share one common goal: <strong>To Do Good</strong></p>
+            <p>We saw two great problems, one in the world at large and one in the tech community.</p>
+            <p>The first problem we saw was that the high cost of software was eliminating technological solutions for volunteer-run organizations and those with low operating budgets. The people that run these groups are so driven they find a way to make a penny stretch a mile, but without technical volunteers to tap into, those pennies just can't stretch that far when it comes to software.</p>
+            <p>The second problem we saw was that the tech community at large is decrying the lack of experienced developers while an abundance of new developers are left flapping around like fish out of water with no guidance and no clear way to make the leap to become that experienced developer that everyone wants.</p>
+
+            <h3>Synchronicity</h3>
+            <p>It seemed a rather obvious connection. Together these two problems are no longer problems but are instead each other's solutions. Rather than focussing on how to solve one, or the other, we realized that we need only to build a framework for these two issues to intersect and great things would happen!</p>
+          </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+{# // Timeline version
 <section id="about">
     <div class="container">
         <div class="row">
@@ -61,4 +119,4 @@
         </div>
     </div>
 </section>
-{% endblock %}
+#}
