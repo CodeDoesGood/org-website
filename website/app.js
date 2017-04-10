@@ -6,13 +6,14 @@
 /**
  * Dependencies
  */
-var _            = require('lodash');
-var express      = require('express');
-var logger       = require('morgan');
-var bodyParser   = require('body-parser');
-var errorHandler = require('errorhandler');
-var path         = require('path');
-var swig         = require('swig');
+const _            = require('lodash');
+const express      = require('express');
+const logger       = require('morgan');
+const bodyParser   = require('body-parser');
+const errorHandler = require('errorhandler');
+const path         = require('path');
+const swig         = require('swig');
+// const argv         = require('optimist');
 
 
 /**
@@ -36,8 +37,7 @@ const initApp = (modules) => {
   app.engine('html', swig.renderFile);
   app.set('view engine', 'html');
   app.set('views', __dirname + '/views');
-  //TODO: enable cache on production
-  app.set('view cache', false);
+  app.set('view cache', true);
 
   /**
    * Template Engine - Swig
