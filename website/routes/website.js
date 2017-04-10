@@ -73,4 +73,13 @@ module.exports = (app) => {
     res.render('code-of-conduct', _.assign(layoutContext, routeContext));
   });
 
+  /**
+   * Mission
+   */
+  app.get('/mission', (req, res) => {
+    const routeContext = {};
+
+    res.render('mission', _.assign(layoutContext, routeContext));
+  });
+
 }
