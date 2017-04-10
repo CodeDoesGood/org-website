@@ -64,5 +64,13 @@ module.exports = (app) => {
   //   // do cool stuff with the form data...
   // });
 
+  /**
+   * Code of Conduct
+   */
+  app.get('/code-of-conduct', (req, res) => {
+    const routeContext = {};
+
+    res.render('code-of-conduct', _.assign(layoutContext, routeContext));
+  });
 
 }
