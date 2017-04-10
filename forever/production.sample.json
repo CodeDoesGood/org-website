@@ -1,0 +1,8 @@
+{
+    "uid": "org-website",
+    "append": true,
+    "watch": false,
+    "script": "index.js",
+    "sourceDir": "get the project path using `pwd`, and paste here",
+    "args": ["--port", "8080"]
+}

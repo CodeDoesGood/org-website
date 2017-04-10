@@ -2,12 +2,13 @@
  * Dependencies
  */
 const express = require('express');
+const argv    = require('optimist').argv;
 
 /**
  * Server App instance
  */
 const app = express();
-app.set('port', process.env.PORT || 3000);
+app.set('port', argv.port || 3000);
 
 /**
 * Website App Instance
