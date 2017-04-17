@@ -20,7 +20,7 @@ module.exports = (app) => {
   app.get('/', (req, res) => {
     const routeContext = {};
 
-    res.render('home', _.assign(layoutContext, routeContext));
+    res.render('about', _.assign(layoutContext, routeContext));
   });
 
   /**
@@ -35,12 +35,10 @@ module.exports = (app) => {
   /**
    * About Us
    */
-  app.get('/about-us', (req, res) => {
-    const routeContext = {
-      people: ['Abbey', 'Shahin', 'Massimo', 'Renato']
-    };
+  app.get('/about', (req, res) => {
+    const routeContext = {};
 
-    res.render('about-us', _.assign(layoutContext, routeContext));
+    res.render('about', _.assign(layoutContext, routeContext));
   });
 
   /**
