@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "CDG Org Website",
   "scripts": {
-    "start": "node index.js",
+    "dev": "nodemon -w ./",
+    "production": "forever start forever/production.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
