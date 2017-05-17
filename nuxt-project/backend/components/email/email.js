@@ -1,19 +1,32 @@
 const logger = require('../logger/logger')
+
+const Promise = require('bluebird')
+
 const nodemailer = require('nodemailer')
 const _ = require('lodash')
 
 class Email {
-  constructor (service, username, password) {
-    this.service = service
-    this.username = username
-    this.transporter = this.build(password)
+  constructor (options) {
+    // The type of service used for emailing
+    this.service = options.service
 
-    this.verify((error, result) => {
-      if (error) {
-        logger.error(`Error creating email connection, error=${error}`)
-      } else {
-        logger.info(`Email Client is ready, service=${this.service}, email: ${this.username}`)
-      }
+    // The email that will be used to make the connection
+    this.username = options.email
+
+    // Transporter that will be sending the emails
+    this.transporter = this.build(options.password)
+
+    // Status for checking that the email connection is working
+    this.online = false
+
+    this.verify()
+    .then((result) => {
+      logger.info(`Email Client is ready, service=${this.service}, email: ${this.username}`)
+      this.online = true
+    })
+    .catch((error) => {
+      logger.error(`Error creating email connection, error=${error}`)
+      this.online = false
     })
   }
 
@@ -36,8 +49,14 @@ class Email {
    * @param {function} callback The callback function to confirm the connection
    */
   verify (callback) {
-    this.transporter.verify((error, result) => {
-      callback(error, result)
+    return new Promise((resolve, reject) => {
+      this.transporter.verify((error, result) => {
+        if (error) {
+          reject(error)
+        } else {
+          resolve(result)
+        }
+      })
     })
   }
 
@@ -63,12 +82,24 @@ class Email {
    * @param {string} html The html to be used instead of the text (defaults to the text)
    * @param {*} callback  Default callback for error and confirmation checking
    */
-  send (to, subject, text, html = undefined, callback) {
-    const message = this.buildMessage({to, subject, text, html})
-    this.transporter.sendMail(message, (error, info) => {
-      if (error) { callback(error, null) }
-      callback(null, info)
+  send (from, to, subject, text, html = undefined, callback) {
+    return new Promise((resolve, reject) => {
+      const message = this.buildMessage({from, to, subject, text, html})
+      this.transporter.sendMail(message, (error, info) => {
+        if (error) {
+          reject(error)
+        } else {
+          resolve(info)
+        }
+      })
     })
+  }
+
+  /**
+   * Returns the online status of the email service (true, false)
+   */
+  getStatus () {
+    return this.online
   }
 }
 
