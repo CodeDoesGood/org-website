@@ -1,15 +1,15 @@
-const winston = require('winston')
+const winston = require('winston');
 
-var logLevels = {
+const logLevels = {
   levels: {
     error: 0,
     warn: 1,
     info: 2,
     verbose: 3,
     debug: 4,
-    silly: 5
-  }
-}
+    silly: 5,
+  },
+};
 
 const logger = new winston.Logger({
   levels: logLevels.levels,
@@ -18,10 +18,10 @@ const logger = new winston.Logger({
       handleExceptions: false,
       json: false,
       colorize: true,
-      level: 'debug'
-    })
+      level: 'debug',
+    }),
   ],
-  exitOnError: false
-})
+  exitOnError: false,
+});
 
-module.exports = logger
+module.exports = logger;

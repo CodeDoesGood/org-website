@@ -4,11 +4,11 @@ const defaultConfig = {
   email: {
     service: 'gmail',
     email: 'contact@codedoesgood.org',
-    password: null
+    password: null,
   },
 
   // What port the webserver will listen too, default: 80
-  web_port: 80
-}
+  web_port: 80,
+};
 
-module.exports = defaultConfig
+module.exports = defaultConfig;

@@ -1,77 +1,80 @@
-const logger = require('../logger/logger')
+const logger = require('../logger/logger');
 
-const Promise = require('bluebird')
+const Promise = require('bluebird');
 
-const nodemailer = require('nodemailer')
-const _ = require('lodash')
+const nodemailer = require('nodemailer');
+const _ = require('lodash');
 
 class Email {
-  constructor (options) {
+  constructor(options) {
     // The type of service used for emailing
-    this.service = options.service
+    this.service = options.service;
 
     // The email that will be used to make the connection
-    this.username = options.email
+    this.username = options.email;
 
     // Transporter that will be sending the emails
-    this.transporter = this.build(options.password)
+    this.transporter = this.build(options.password);
 
     // Status for checking that the email connection is working
-    this.online = false
+    this.online = false;
 
     this.verify()
-    .then((result) => {
-      logger.info(`Email Client is ready, service=${this.service}, email: ${this.username}`)
-      this.online = true
+    .then(() => {
+      logger.info(`Email Client is ready, service=${this.service}, email=${this.username}`);
+      this.online = true;
     })
     .catch((error) => {
-      logger.error(`Error creating email connection, error=${error}`)
-      this.online = false
-    })
+      logger.error(`Error creating email connection, error=${error}`);
+      this.online = false;
+    });
   }
 
   /**
    * Builds the transporter from nodemailer that will be used to send the emails
    * @param {string} pass The password that is being used to authenticate with the service
    */
-  build (pass) {
+  build(pass) {
+    logger.debug(this.service, this.username, pass);
     return nodemailer.createTransport({
+      secure: true,
       service: this.service,
       auth: {
         user: this.username,
-        pass
-      }
-    })
+        pass,
+      },
+    });
   }
 
   /**
    * Verifies the connection the service.
    * @param {function} callback The callback function to confirm the connection
    */
-  verify (callback) {
+  verify() {
     return new Promise((resolve, reject) => {
       this.transporter.verify((error, result) => {
         if (error) {
-          reject(error)
+          reject(error);
         } else {
-          resolve(result)
+          resolve(result);
         }
-      })
-    })
+      });
+    });
   }
 
   /**
    * Returns a build object ready to be passed into the transporter for sending a email.
-   * @param {object} message The object containing the message details (from, to, subject, text, html)
+   * @param {object} message The object containing the message details,
+   * from, to, subject, text, html
    */
-  buildMessage (message) {
+  buildMessage(message) {
     return {
       from: this.username,
       to: message.to,
       subject: message.subject,
       text: message.text,
-      html: _.defaultTo(message.html, message.text)
-    }
+      html: _.defaultTo(message.html, message.text),
+    };
   }
 
   /**
@@ -82,25 +85,25 @@ class Email {
    * @param {string} html The html to be used instead of the text (defaults to the text)
    * @param {*} callback  Default callback for error and confirmation checking
    */
-  send (from, to, subject, text, html = undefined, callback) {
+  send(from, to, subject, text, html = undefined) {
     return new Promise((resolve, reject) => {
-      const message = this.buildMessage({from, to, subject, text, html})
+      const message = this.buildMessage({ from, to, subject, text, html });
       this.transporter.sendMail(message, (error, info) => {
         if (error) {
-          reject(error)
+          reject(error);
         } else {
-          resolve(info)
+          resolve(info);
         }
-      })
-    })
+      });
+    });
   }
 
   /**
    * Returns the online status of the email service (true, false)
    */
-  getStatus () {
-    return this.online
+  getStatus() {
+    return this.online;
   }
 }
 
-module.exports = Email
+module.exports = Email;
