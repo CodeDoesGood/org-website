@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const routes = require('./routes');
 const Nuxt = require('nuxt');
 
-const host = process.env.HOST || '127.0.0.1';
 const port = process.env.PORT || 3000;
 
 nuxtConfiguration.dev = !(process.env.NODE_ENV === 'production');
@@ -27,4 +26,4 @@ if (nuxtConfiguration.dev) {
 app.use('/api', routes);
 app.use(nuxt.render);
 
-app.listen(port, () => { logger.info(`Server listening on port ${host}:${port}`); });
+app.listen(port, () => { logger.info(`Server listening on port: ${port}`); });

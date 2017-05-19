@@ -3,14 +3,14 @@ const Router = require('express').Router;
 
 const router = Router();
 
-router.post('/contact/send', [
+router.post('/contact-us/send', [
   contact.validateEmailConnectionStatus.bind(this),
   contact.validateContactUsRequestInformation.bind(this),
   contact.DenyInvalidAndBlockedDomains.bind(this),
   contact.sendContactUsRequestInbox.bind(this),
 ]);
 
-router.get('/contact/status', [
+router.get('/contact-us/status', [
   contact.sendContactUsEmailStatus.bind(this),
 ]);
 
