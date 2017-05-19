@@ -1,11 +1,10 @@
-const logger = require('../logger/logger');
+import Promise from 'bluebird';
+import nodemailer from 'nodemailer';
+import _ from 'lodash';
 
-const Promise = require('bluebird');
+import logger from '../logger/logger';
 
-const nodemailer = require('nodemailer');
-const _ = require('lodash');
-
-class Email {
+export default class Email {
   constructor(options) {
     // The type of service used for emailing
     this.service = options.service;
@@ -103,5 +102,3 @@ class Email {
     return this.online;
   }
 }
-
-module.exports = Email;

@@ -1,5 +1,5 @@
-const contact = require('../middleware/contact');
-const Router = require('express').Router;
+import { Router } from 'express';
+import contact from '../middleware/contact';
 
 const router = Router();
 
@@ -14,4 +14,4 @@ router.get('/contact-us/status', [
   contact.sendContactUsEmailStatus.bind(this),
 ]);
 
-module.exports = router;
+export default router;

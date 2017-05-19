@@ -1,8 +1,8 @@
-const Configuration = require('../components/configuration/configuration');
-const Email = require('../components/email/email');
-const logger = require('../components/logger/logger');
+import _ from 'lodash';
 
-const _ = require('lodash');
+import Configuration from '../components/configuration/configuration';
+import Email from '../components/email/email';
+import logger from '../components/logger/logger';
 
 const config = new Configuration('CodeDoesGood', 'CodeDoesGoodWebsite.json');
 const email = new Email(config.getKey('email'));
@@ -76,7 +76,7 @@ function sendContactUsEmailStatus(req, res) {
   if (email.getStatus()) { res.sendStatus(200); } else { res.status(500).send({ error: 'Unavailable Service', description: 'Email service is currently unavailable or down' }); }
 }
 
-module.exports = {
+export default {
   validateEmailConnectionStatus,
   validateContactUsRequestInformation,
   DenyInvalidAndBlockedDomains,

@@ -1,4 +1,4 @@
-const winston = require('winston');
+import winston from 'winston';
 
 const logLevels = {
   levels: {
@@ -11,7 +11,7 @@ const logLevels = {
   },
 };
 
-const logger = new winston.Logger({
+const Logger = new winston.Logger({
   levels: logLevels.levels,
   transports: [
     new winston.transports.Console({
@@ -24,4 +24,4 @@ const logger = new winston.Logger({
   exitOnError: false,
 });
 
-module.exports = logger;
+export default Logger;
