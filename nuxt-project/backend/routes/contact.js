@@ -1,17 +1,17 @@
-const contact = require('../middleware/contact');
-const Router = require('express').Router;
+import { Router } from 'express';
+import contact from '../middleware/contact';
 
 const router = Router();
 
-router.post('/contact/send', [
+router.post('/contact-us/send', [
   contact.validateEmailConnectionStatus.bind(this),
   contact.validateContactUsRequestInformation.bind(this),
   contact.DenyInvalidAndBlockedDomains.bind(this),
   contact.sendContactUsRequestInbox.bind(this),
 ]);
 
-router.get('/contact/status', [
+router.get('/contact-us/status', [
   contact.sendContactUsEmailStatus.bind(this),
 ]);
 
-module.exports = router;
+export default router;

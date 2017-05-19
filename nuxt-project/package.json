@@ -5,9 +5,9 @@
   "author": "Renato Camilio <renato@codedoesgood.org>",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "node backend/index.js",
-    "start": "cross-env NODE_ENV=production node backend/index.js",
+    "build": "nuxt build && backpack build",
+    "dev": "backpack dev",
+    "start": "cross-env NODE_ENV=production node build/main.js",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js --ignore-path .gitignore .",
     "precommit": "npm run lint"
@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
+    "backpack-core": "^0.3.0",
+    "chai": "^3.5.0",
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-loader": "^1.6.1",
@@ -32,6 +34,7 @@
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-promise": "^3.4.1",
     "eslint-plugin-react": "^7.0.1",
-    "eslint-plugin-standard": "^2.0.1"
+    "eslint-plugin-standard": "^2.0.1",
+    "mocha": "^3.4.1"
   }
 }

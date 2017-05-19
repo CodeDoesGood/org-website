@@ -1,12 +1,13 @@
-const logger = require('./components/logger/logger');
-const nuxtConfiguration = require('../nuxt.config.js');
+import express from 'express';
+import bodyParser from 'body-parser';
+import Nuxt from 'nuxt';
 
-const app = require('express')();
-const bodyParser = require('body-parser');
-const routes = require('./routes');
-const Nuxt = require('nuxt');
+import logger from './components/logger/logger';
+import nuxtConfiguration from '../nuxt.config';
 
-const host = process.env.HOST || '127.0.0.1';
+import routes from './routes';
+
+const app = express();
 const port = process.env.PORT || 3000;
 
 nuxtConfiguration.dev = !(process.env.NODE_ENV === 'production');
@@ -27,4 +28,4 @@ if (nuxtConfiguration.dev) {
 app.use('/api', routes);
 app.use(nuxt.render);
 
-app.listen(port, () => { logger.info(`Server listening on port ${host}:${port}`); });
+app.listen(port, () => { logger.info(`Server listening on port: ${port}`); });

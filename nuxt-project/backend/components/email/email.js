@@ -1,11 +1,10 @@
-const logger = require('../logger/logger');
+import Promise from 'bluebird';
+import nodemailer from 'nodemailer';
+import _ from 'lodash';
 
-const Promise = require('bluebird');
+import logger from '../logger/logger';
 
-const nodemailer = require('nodemailer');
-const _ = require('lodash');
-
-class Email {
+export default class Email {
   constructor(options) {
     // The type of service used for emailing
     this.service = options.service;
@@ -35,7 +34,6 @@ class Email {
    * @param {string} pass The password that is being used to authenticate with the service
    */
   build(pass) {
-    logger.debug(this.service, this.username, pass);
     return nodemailer.createTransport({
       secure: true,
       service: this.service,
@@ -83,7 +81,6 @@ class Email {
    * @param {string} subject The subject text for the email
    * @param {string} text  The content text for the email
    * @param {string} html The html to be used instead of the text (defaults to the text)
-   * @param {*} callback  Default callback for error and confirmation checking
    */
   send(from, to, subject, text, html = undefined) {
     return new Promise((resolve, reject) => {
@@ -105,5 +102,3 @@ class Email {
     return this.online;
   }
 }
-
-module.exports = Email;

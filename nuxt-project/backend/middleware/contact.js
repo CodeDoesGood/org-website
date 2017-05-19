@@ -1,8 +1,8 @@
-const Configuration = require('../components/configuration/configuration');
-const Email = require('../components/email/email');
-const logger = require('../components/logger/logger');
+import _ from 'lodash';
 
-const _ = require('lodash');
+import Configuration from '../components/configuration/configuration';
+import Email from '../components/email/email';
+import logger from '../components/logger/logger';
 
 const config = new Configuration('CodeDoesGood', 'CodeDoesGoodWebsite.json');
 const email = new Email(config.getKey('email'));
@@ -20,7 +20,6 @@ function validateEmailConnectionStatus(req, res, next) {
 
 /**
  * Validates the users name, email and text that as been sent.
- * [TODO: Filter out blocked or banned email address domains for if they pass the captcha]
  */
 function validateContactUsRequestInformation(req, res, next) {
   const senderName = req.body.name;
@@ -38,7 +37,7 @@ function validateContactUsRequestInformation(req, res, next) {
   } else if (sender.name.length > 50 || sender.email.length > 50 || sender.subject.length > 50) {
     return res.status(400).send({ error: 'Invalid length', description: 'Please make sure email and name are less than 50 characters each' });
   } else if (sender.text.length > 500 || sender.text.length < 5) {
-    return res.status(400).send({ error: 'Invalid length', description: 'Please use less than 500 characters for contact text' });
+    return res.status(400).send({ error: 'Invalid length', description: 'Please use less than 500 characters for contact text or greater than 5' });
   }
 
   // Bind the sender to the request data to be accessed later
@@ -74,10 +73,10 @@ function sendContactUsRequestInbox(req, res) {
  * Sends OK or Internal Server Error based on the true / false email status
  */
 function sendContactUsEmailStatus(req, res) {
-  if (email.getStatus()) { res.sendStatus(200); } else { res.sendStatus(500); }
+  if (email.getStatus()) { res.sendStatus(200); } else { res.status(500).send({ error: 'Unavailable Service', description: 'Email service is currently unavailable or down' }); }
 }
 
-module.exports = {
+export default {
   validateEmailConnectionStatus,
   validateContactUsRequestInformation,
   DenyInvalidAndBlockedDomains,
