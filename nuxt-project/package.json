@@ -9,6 +9,7 @@
     "dev": "backpack dev",
     "start": "cross-env NODE_ENV=production node build/main.js",
     "generate": "nuxt generate",
+    "test": "node ./node_modules/mocha/bin/mocha ./backend/tests/index.test.js",
     "lint": "eslint --ext .js --ignore-path .gitignore .",
     "precommit": "npm run lint"
   },
