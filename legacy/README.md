@@ -5,14 +5,20 @@
 
 First let's install the dependencies of our project:
 
-`npm install`
+```
+npm install
+```
 
 Next, let's install `nodemon` so you can have your changes being hot-reloaded without having to restart the server every time:
 
-`npm install -g nodemon`
+```
+npm install -g nodemon
+```
 
 Then test it out!
-`npm run dev`
+```
+npm run dev
+```
 
 ### Setup `forever` for production
 

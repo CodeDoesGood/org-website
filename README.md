@@ -8,7 +8,7 @@ This project is split into 2 main sections:
 
 ### Legacy project
 
-The legacy project is an Express.js App, using `swig` views to render our HTML files, with a very minimal and straightforward folder structure for our routes.
+The [legacy](legacy) project is an Express.js App, using `swig` views to render our HTML files, with a very minimal and straightforward folder structure for our routes.
 
 ### Future `Nuxt.js` (or `Next.js`)
 
