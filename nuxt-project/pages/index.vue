@@ -2,26 +2,26 @@
   <section class="container">
     <div>
       <logo/>
-      <h1 class="title">
-        NUXT
-      </h1>
       <h2 class="subtitle">
-        Universal Vue.js Application
+        Build Solutions to real world problems
       </h2>
       <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">Github</a>
+        <a href="https://github.com/CodeDoesGood/business/wiki" target="_blank" class="button--green">Documentation</a>
+        <a href="https://github.com/CodeDoesGood" target="_blank" class="button--grey">Github</a>
       </div>
     </div>
+    <Footer/>
   </section>
 </template>
 
 <script>
 import Logo from '~components/Logo.vue';
+import Footer from '~components/Footer.vue';
 
 export default {
   components: {
     Logo,
+    Footer,
   },
 };
 </script>
