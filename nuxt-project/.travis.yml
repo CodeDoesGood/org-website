@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "6"
+
+sudo: false
+
+notifications:
+  email:
+    on_failure: always
+
+install:
+  - npm install
+
+script:
+  - npm run build
