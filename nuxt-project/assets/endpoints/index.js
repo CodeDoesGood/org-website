@@ -2,6 +2,8 @@ import * as apiCall from './apiCall';
 import utils from './utils';
 
 import contactEndpoint from './endpoints/contactEndpoint';
+import editorEndpoint from './endpoints/editorEndpoint';
+import volunteerEndpoint from './endpoints/volunteerEndpoint';
 
 export default function endpointApi(token = null) {
   const setUtil = (key, value) => {
@@ -16,6 +18,8 @@ export default function endpointApi(token = null) {
 
   return {
     contact: contactEndpoint,
+    editor: editorEndpoint,
+    volunteer: volunteerEndpoint,
     apiCall,
     setUtil,
     getUtil,
