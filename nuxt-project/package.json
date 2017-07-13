@@ -20,6 +20,7 @@
     "lodash": "^4.17.4",
     "nodemailer": "^4.0.1",
     "nuxt": "latest",
+    "superagent": "^3.5.2",
     "winston": "^2.3.1"
   },
   "devDependencies": {

@@ -10,7 +10,7 @@
 			</div>
 			<div class="footer-left">
         <div class="footerLogoContainer">
-          <span class="footerLogo">< CDG /></span>
+          <a href="/" class="logoLink"><span class="footerLogo">< CDG /></span></a>
 				  <p>&copy; CodeDoesGood. 2017</p>
         </div>
 				<p class="footer-links">
@@ -28,6 +28,10 @@
 .footerLogoContainer {
   float:left;
   text-align: center;
+}
+
+.logoLink {
+  text-decoration:  none;
 }
 
 .footer-links a {
