@@ -1,8 +1,22 @@
 <template>
   <div>
+    <Head/>
     <nuxt/>
+    <Foot/>
   </div>
 </template>
+
+<script>
+import Foot from '~components/Footer.vue';
+import Head from '~components/Header.vue';
+
+export default {
+  components: {
+    Foot,
+    Head,
+  },
+};
+</script>
 
 <style>
 html
