@@ -14,9 +14,9 @@
 				  <p>&copy; CodeDoesGood. 2017</p>
         </div>
 				<p class="footer-links">
-					<a href="" target="_blank" class="footerLinks" href="#">About</a>
-					<a href="" target="_blank" class="footerLinks" href="#">Community</a>
-					<a href="" target="_blank" class="footerLinks" href="#">Contact Us</a>
+					<a href="/About" class="footerLinks" >About</a>
+					<a href="/Community" class="footerLinks" >Community</a>
+					<a href="/Contact" class="footerLinks" >Contact Us</a>
 				</p>
 			</div>
 		</footer>

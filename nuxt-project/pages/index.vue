@@ -10,7 +10,6 @@
         <a href="https://github.com/CodeDoesGood" target="_blank" class="button--grey">Github</a>
       </div>
     </div>
-    <Footer/>
   </section>
 </template>
 
@@ -21,7 +20,6 @@ import Footer from '~components/Footer.vue';
 export default {
   components: {
     Logo,
-    Footer,
   },
 };
 </script>
