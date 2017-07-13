@@ -1,14 +1,14 @@
 <template>
   <div>
-    <Header/>
+    <Head/>
     <nuxt/>
-    <Footer/>
+    <Foot/>
   </div>
 </template>
 
 <script>
-import Footer from '~components/Footer.vue';
-import Header from '~components/Header.vue';
+import Foot from '~components/Footer.vue';
+import Head from '~components/Header.vue';
 
 export default {
   components: {
