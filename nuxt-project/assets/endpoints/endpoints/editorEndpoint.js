@@ -23,7 +23,7 @@ const volunteerEndpoint = endpoint({
    * @param {string} content The content that will be updating replacing the database content
    */
   updateById(id, content) {
-    const options = utils.buildOptions(this.apiUrl, `${this.path}/update/${id}`, 'get', { content });
+    const options = utils.buildOptions(this.apiUrl, `${this.path}/update/${id}`, 'post', { content });
     return this.apiCall(options);
   },
 });

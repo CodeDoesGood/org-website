@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import contact from './contact';
+import editor from './editor';
 
 const router = Router();
 
@@ -8,5 +9,6 @@ const router = Router();
  * express routing system.
  */
 router.use(contact);
+router.use(editor);
 
 export default router;

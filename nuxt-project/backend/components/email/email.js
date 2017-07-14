@@ -16,12 +16,11 @@ export default class Email {
     this.transporter = this.build(options.password);
 
     // Status for checking that the email connection is working.
-    this.online = false;
+    this.online = true;
 
     this.verify()
     .then(() => {
       logger.info(`Email Client is ready, service=${this.service}, email=${this.username}`);
-      this.online = true;
     })
     .catch((error) => {
       logger.error(`Error creating email connection, error=${error}`);
