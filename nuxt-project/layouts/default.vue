@@ -1,19 +1,19 @@
 <template>
   <div>
-    <Head/>
+    <HeadComponent/>
     <nuxt/>
-    <Foot/>
+    <FootComponent/>
   </div>
 </template>
 
 <script>
-import Foot from '~components/Footer.vue';
-import Head from '~components/Header.vue';
+import FootComponent from '~components/Footer.vue';
+import HeadComponent from '~components/Header.vue';
 
 export default {
   components: {
-    Foot,
-    Head,
+    FootComponent,
+    HeadComponent,
   },
 };
 </script>
