@@ -6,16 +6,16 @@ import logger from '../logger/logger';
 
 export default class Email {
   constructor(options) {
-    // The type of service used for emailing
+    // The type of service used for emailing.
     this.service = options.service;
 
-    // The email that will be used to make the connection
+    // The email that will be used to make the connection.
     this.username = options.email;
 
     // Transporter that will be sending the emails
     this.transporter = this.build(options.password);
 
-    // Status for checking that the email connection is working
+    // Status for checking that the email connection is working.
     this.online = false;
 
     this.verify()
@@ -30,8 +30,8 @@ export default class Email {
   }
 
   /**
-   * Builds the transporter from nodemailer that will be used to send the emails
-   * @param {string} pass The password that is being used to authenticate with the service
+   * Builds the transporter from nodemailer that will be used to send the emails.
+   * @param {string} pass The password that is being used to authenticate with the service.
    */
   build(pass) {
     return nodemailer.createTransport({
@@ -46,7 +46,7 @@ export default class Email {
 
   /**
    * Verifies the connection the service.
-   * @param {function} callback The callback function to confirm the connection
+   * @param {function} callback The callback function to confirm the connection.
    */
   verify() {
     return new Promise((resolve, reject) => {
@@ -63,7 +63,7 @@ export default class Email {
   /**
    * Returns a build object ready to be passed into the transporter for sending a email.
    * @param {object} message The object containing the message details,
-   * from, to, subject, text, html
+   * from, to, subject, text, html.
    */
   buildMessage(message) {
     return {
@@ -76,10 +76,10 @@ export default class Email {
   }
 
   /**
-   * Sends a email to the provided person with the provided content
-   * @param {string} to The person who is getting sent the email
-   * @param {string} subject The subject text for the email
-   * @param {string} text  The content text for the email
+   * Sends a email to the provided person with the provided content.
+   * @param {string} to The person who is getting sent the email.
+   * @param {string} subject The subject text for the email.
+   * @param {string} text  The content text for the email.
    * @param {string} html The html to be used instead of the text (defaults to the text)
    */
   send(from, to, subject, text, html = undefined) {
@@ -96,7 +96,7 @@ export default class Email {
   }
 
   /**
-   * Returns the online status of the email service (true, false)
+   * Returns the online status of the email service (true, false).
    */
   getStatus() {
     return this.online;

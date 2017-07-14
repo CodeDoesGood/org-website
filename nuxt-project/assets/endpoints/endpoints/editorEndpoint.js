@@ -5,7 +5,6 @@ import utils from '../utils';
  * This is currently preplanning code to help within the future when the
  * page editor system is setup and ready use.
  */
-
 const volunteerEndpoint = endpoint({
   apiUrl: utils.API_URL,
   path: 'editor',

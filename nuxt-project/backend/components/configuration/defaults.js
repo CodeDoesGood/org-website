@@ -1,6 +1,6 @@
 const defaultConfig = {
 
-  // The settings used by nodemailer for sending emails (password should never be set here)
+  // The settings used by nodemailer for sending emails (password should never be set here).
   email: {
     service: 'gmail',
     email: 'contact@codedoesgood.org',

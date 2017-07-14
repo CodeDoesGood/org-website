@@ -17,6 +17,7 @@
     "body-parser": "^1.17.1",
     "cross-env": "^5.0.0",
     "express": "^4.15.2",
+    "knex": "^0.13.0",
     "lodash": "^4.17.4",
     "nodemailer": "^4.0.1",
     "nuxt": "latest",

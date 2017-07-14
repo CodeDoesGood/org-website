@@ -8,7 +8,6 @@ Promise.config({
   warnings: false,
 });
 
-
 export default function apiCall(options) {
   ['method', 'apiUrl', 'path', 'body'].forEach((option) => {
     // All options must be specified before making a call.

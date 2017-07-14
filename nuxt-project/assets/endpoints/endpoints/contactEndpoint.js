@@ -16,6 +16,7 @@ const contactEndpoint = endpoint({
     const options = utils.buildOptions(this.apiUrl, `${this.path}/send`, 'post', { name, email, subject, text });
     return this.apiCall(options);
   },
+
   /**
    * Gathers the current up status of the email service.
    * returns a standard 200 if all is okay but returns a 503

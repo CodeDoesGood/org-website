@@ -5,7 +5,6 @@ import utils from '../utils';
  * This is currently preplanning code to help within the future when the
  * volunteer software is setup and ready for hooking into.
  */
-
 const volunteerEndpoint = endpoint({
   // Pointing to the general idea of the volunteer webapp location.
   apiUrl: 'http://volunteer.codedoesgood.org/api/',

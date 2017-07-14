@@ -25,6 +25,9 @@ if (nuxtConfiguration.dev) {
   });
 }
 
+/**
+ * Binds all routes to /api before nuxt does, this allows us to preserve our requests routes.
+ */
 app.use('/api', routes);
 app.use(nuxt.render);
 
