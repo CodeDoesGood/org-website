@@ -14,7 +14,6 @@ nuxtConfiguration.dev = !(process.env.NODE_ENV === 'production');
 
 // Pass the configuration to setup Nuxt
 const nuxt = new Nuxt(nuxtConfiguration);
-app.use(bodyParser.urlencoded({ extended: false }));
 
 // Build the nuxt if the configuration is in dev mode
 if (nuxtConfiguration.dev) {
@@ -28,6 +27,8 @@ if (nuxtConfiguration.dev) {
 /**
  * Binds all routes to /api before nuxt does, this allows us to preserve our requests routes.
  */
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use('/api', routes);
 app.use(nuxt.render);
 

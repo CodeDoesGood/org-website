@@ -19,13 +19,13 @@ export default class Email {
     this.online = true;
 
     this.verify()
-    .then(() => {
-      logger.info(`Email Client is ready, service=${this.service}, email=${this.username}`);
-    })
-    .catch((error) => {
-      logger.error(`Error creating email connection, error=${error}`);
-      this.online = false;
-    });
+      .then(() => {
+        logger.info(`Email Client is ready, service=${this.service}, email=${this.username}`);
+      })
+      .catch((error) => {
+        logger.error(`Error creating email connection, error=${error}`);
+        this.online = false;
+      });
   }
 
   /**

@@ -7,6 +7,7 @@
   "scripts": {
     "build": "nuxt build && backpack build",
     "dev": "backpack dev",
+    "inspect": "node --inspect build/main.js",
     "start": "cross-env NODE_ENV=production node build/main.js",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js --ignore-path .gitignore .",

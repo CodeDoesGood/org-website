@@ -18,9 +18,19 @@ router.get('/editor/gather/:id', [
 router.post('/editor/update/:id', [
   editor.validateDatabaseConnectionStatus.bind(this),
   editor.validateAuthenticationToken.bind(this),
-  editor.validateContentBeingUpdated.bind(this),
+  editor.validateContent.bind(this),
   editor.validateContentId.bind(this),
   editor.updateContentByIdForRequestingUser.bind(this),
+]);
+
+/**
+ * Todo: Verify token that was authenticated with.
+ */
+router.post('/editor/insert', [
+  editor.validateDatabaseConnectionStatus.bind(this),
+  editor.validateAuthenticationToken.bind(this),
+  editor.validateContent.bind(this),
+  editor.insertContentIntoDatabase.bind(this),
 ]);
 
 export default router;

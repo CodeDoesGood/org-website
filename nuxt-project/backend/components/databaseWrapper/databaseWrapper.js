@@ -52,8 +52,8 @@ export default class DatbaseWrapper {
    */
   getContentById(id) {
     return new Promise((resolve, reject) => {
-      this.knex('content').select('id', 'content').where('id', id).first()
-        .then(result => resolve({ id: result.id, text: result.content }))
+      this.knex('content').select('*').where('id', id).first()
+        .then(result => resolve({ ...result }))
         .catch(error => reject(error));
     });
   }
@@ -80,10 +80,10 @@ export default class DatbaseWrapper {
    * @param alias The alias being inserted.
    * @param modifier The user updating the content.
    */
-  updateContentById(id, content, title, alias, modifier) {
+  updateContentById(id, text, title, alias, modifier) {
     return new Promise((resolve, reject) => {
       this.knex('content').where('id', id).update({
-        content,
+        text,
         title,
         alias,
         modified_by: modifier,
@@ -93,6 +93,29 @@ export default class DatbaseWrapper {
         .catch(error => reject(error));
     });
   }
+
+  /**
+   * Add content to the content table of the database
+   * @param title Title of the artical.
+   * @param alias Alias of the artical.
+   * @param text Text for the artical.
+   * @param createdBy User who created the artical.
+   */
+  addContent(title, alias, text, createdBy) {
+    return new Promise((resolve, reject) => {
+      this.knex('content').insert({
+        title,
+        alias,
+        text,
+        created_by: createdBy,
+        modified_date: new Date().toLocaleString(),
+        modified_by: createdBy,
+      })
+        .then(() => resolve(true))
+        .catch(error => reject(error));
+    });
+  }
+
 
   /**
    * @returns {boolean} Online Status

@@ -7,6 +7,7 @@ const defaultConfig = {
     password: null,
   },
 
+  database_path: './backend/database/database.db',
   // What port the webserver will listen too, default: 80
   web_port: 80,
 };

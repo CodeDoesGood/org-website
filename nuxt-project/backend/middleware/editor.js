@@ -11,8 +11,13 @@ const databaseWrapper = new DatabaseWrapper(config.getKey('database_path'));
  * Validates that the email service is currently working before even attempting to continue
  */
 function validateDatabaseConnectionStatus(req, res, next) {
-  if (databaseWrapper.getStatus()) { return next(); }
-  return res.status(503).send({ error: 'Unavailable Service', description: 'Content service is currently unavailable or down' });
+  const status = databaseWrapper.getStatus();
+
+  if (status) {
+    next();
+  } else {
+    res.status(503).send({ error: 'Unavailable Service', description: 'Content service is currently unavailable or down' });
+  }
 }
 
 /**
@@ -32,7 +37,7 @@ function validateContentId(req, res, next) {
    * Checks to see if the id exists in the database, continues if it exists otherwise
    * it will reject and and sends a bad request (400) back to the client.
    */
-  databaseWrapper.doesIdExist(contentId)
+  return databaseWrapper.doesIdExist(contentId)
     .then(() => {
       req.contentId = contentId;
       next();
@@ -56,30 +61,41 @@ function validateAuthenticationToken(req, res/* , next */) {
 /**
  * Validates that the content being requested to be updated is a valid string and not null
  */
-function validateContentBeingUpdated(req, res, next) {
+function validateContent(req, res, next) {
   const content = req.body.content;
 
-  if (_.isNil(content)) {
-    res.status(400).send({ error: 'Content Validation', description: 'Content is not in a valid format' });
+  if (_.isNil(content) || !_.isObject(content)) {
+    return res.status(400).send({ error: 'Content Validation', description: 'Content text, title, alias and modifier expected' });
   }
+
+  if (_.isNil(content.text) || !_.isString(content.text)) {
+    return res.status(400).send({ error: 'Content Validation', description: 'text has to be specified' });
+  } else if (_.isNil(content.title) || !_.isString(content.title)) {
+    return res.status(400).send({ error: 'Content Validation', description: 'title has to be specified' });
+  } else if (_.isNil(content.alias) || !_.isString(content.alias)) {
+    return res.status(400).send({ error: 'Content Validation', description: 'alias has to be specified' });
+  } else if (_.isNil(content.modifier) || !_.isString(content.modifier)) {
+    return res.status(400).send({ error: 'Content Validation', description: 'modifier has to be specified' });
+  }
+
+  req.content = content;
+  return next();
+}
+
+function insertContentIntoDatabase(req, res) {
+  const content = req.content;
 
   const text = content.text;
   const title = content.title;
   const alias = content.alias;
   const modifier = content.modifier;
 
-  if (_.isNil(text) || !_.isString(text)) {
-    res.status(400).send({ error: 'Content Validation', description: 'Content text is not in a valid format' });
-  } else if (_.isNil(alias) || !_.isString(alias)) {
-    res.status(400).send({ error: 'Content Validation', description: 'Content alias is not in a valid format' });
-  } else if (_.isNil(title) || !_.isString(title)) {
-    res.status(400).send({ error: 'Content Validation', description: 'Content title is not in a valid format' });
-  } else if (_.isNil(modifier) || !_.isString(modifier)) {
-    res.status(400).send({ error: 'Content Validation', description: 'Content modifier is not in a valid format' });
-  }
-
-  req.content = content;
-  next();
+  databaseWrapper.addContent(title, alias, text, modifier)
+    .then(() => res.status(200).send({ message: `Content ${title} inserted` }))
+    .catch((error) => {
+      logger.error(`Error while adding content to the content table, error=${JSON.stringify(error)}`);
+      res.status(500).send({ error: 'Content adding', description: `Failed to add content ${title} to the database` });
+    });
 }
 
 /**
@@ -107,7 +123,7 @@ function sendContentByIdForRequestingUser(req, res) {
   const contentId = req.contentId;
 
   databaseWrapper.getContentById(contentId)
-    .then(result => res.status(200).send({ message: `content for id ${contentId}`, content: { text: result.text } }))
+    .then(result => res.status(200).send({ message: `content for id ${contentId}`, content: { ...result } }))
     .catch((error) => {
       logger.warn(`Error gathering content for id ${contentId}, error=${JSON.stringify(error)}`);
       res.status(500).send({ error: 'content error', description: `Unable to gather content for id ${contentId}` });
@@ -116,9 +132,10 @@ function sendContentByIdForRequestingUser(req, res) {
 
 export default {
   validateDatabaseConnectionStatus,
-  validateContentBeingUpdated,
+  validateContent,
   updateContentByIdForRequestingUser,
   sendContentByIdForRequestingUser,
   validateAuthenticationToken,
   validateContentId,
+  insertContentIntoDatabase,
 };
