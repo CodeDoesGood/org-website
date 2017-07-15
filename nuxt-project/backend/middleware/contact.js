@@ -70,10 +70,10 @@ function sendContactUsRequestInbox(req, res) {
 }
 
 /**
- * Sends OK or Internal Server Error based on the true / false email status
+ * Sends OK or Internal Server Error based on the true / false email status.
  */
 function sendContactUsEmailStatus(req, res) {
-  if (email.getStatus()) { res.sendStatus(200); } else { res.status(500).send({ error: 'Unavailable Service', description: 'Email service is currently unavailable or down' }); }
+  if (email.getStatus()) { res.sendStatus(200); } else { res.status(503).send({ error: 'Unavailable Service', description: 'Email service is currently unavailable or down' }); }
 }
 
 export default {

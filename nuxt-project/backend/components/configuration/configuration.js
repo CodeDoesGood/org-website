@@ -9,10 +9,10 @@ class Configuration {
     // Setting the home directory
     this.getUserHome();
 
-    // The directory to the folder path that will used
+    // The directory to the folder path that will used.
     this.folderDir = `${this.homeDirectory}${folder}`;
 
-    // The file name of the configuration file
+    // The file name of the configuration file.
     this.name = name;
 
     // The current full configuration path
