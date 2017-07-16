@@ -126,6 +126,18 @@ export default class DatbaseWrapper {
   }
 
   /**
+   * Selects all contents from the contents rows
+   * and resolves it back as a promise
+   */
+  getAllContentRows() {
+    return new Promise((resolve, reject) => {
+      this.knex.select('*').from('content')
+        .then(content => resolve(content))
+        .catch(error => reject(error));
+    });
+  }
+
+  /**
    * @returns {boolean} Online Status
    */
   getStatus() {
