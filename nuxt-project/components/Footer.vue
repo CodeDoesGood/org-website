@@ -52,9 +52,8 @@
   font: normal 16px sans-serif;
   position: absolute;
   right: 0;
-  bottom: 0;
   left: 0;
-  padding: 3em;
+  padding: 1em;
 }
 
 .footer-distributed .footer-left p{
