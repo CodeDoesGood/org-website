@@ -1,5 +1,5 @@
 const utils = {
-  API_URL: '/api',
+  API_URL: 'localhost:3000/api',
   TOKEN: '',
 
   buildOptions: (apiUrl, path, method, body = {}) => ({

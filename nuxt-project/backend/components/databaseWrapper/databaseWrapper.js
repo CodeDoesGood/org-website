@@ -26,8 +26,23 @@ export default class DatbaseWrapper {
     this.knex = null;
     this.online = true;
 
-    this.connect();
 
+    this.connect()
+      .then(() => logger.info(`Successfully connected to knex database=${this.path}`))
+      .catch((error) => {
+        this.online = false;
+        logger.error(`Could not connect to knex database=${this.path}, error=${JSON.stringify((error))}`);
+      });
+
+    /**
+     * class is bounded after all the creation of the connection,
+     * this will then be checked if the instance exists if this wrapper
+     * is used again and instead of creating another instance it will
+     * use this instance. Commonly known as a singleton as we don't need
+     * multiple connections to the database at this time.
+     *
+     * more here: https://en.wikipedia.org/wiki/Singleton_pattern
+     */
     instance = this;
   }
 
@@ -37,13 +52,7 @@ export default class DatbaseWrapper {
    */
   connect() {
     this.knex = knex({ client: 'sqlite3', connection: { filename: this.path }, useNullAsDefault: true });
-
-    return this.knex.raw('SELECT 1+1 as answer')
-      .then(() => logger.info(`Successfully connected to knex database=${this.path}`))
-      .catch((error) => {
-        this.online = false;
-        logger.error(`Could not connect to knex database=${this.path}, error=${JSON.stringify((error))}`);
-      });
+    return this.knex.raw('SELECT 1+1 as answer');
   }
 
   /**
@@ -115,7 +124,6 @@ export default class DatbaseWrapper {
         .catch(error => reject(error));
     });
   }
-
 
   /**
    * @returns {boolean} Online Status
