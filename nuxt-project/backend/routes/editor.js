@@ -15,6 +15,15 @@ router.get('/editor/gather/:id', [
 /**
  * Todo: Verify token that was authenticated with.
  */
+router.get('/editor/content/all', [
+  editor.validateDatabaseConnectionStatus.bind(this),
+  editor.validateAuthenticationToken.bind(this),
+  editor.sendAllContentDataToRequestingUser.bind(this),
+]);
+
+/**
+ * Todo: Verify token that was authenticated with.
+ */
 router.post('/editor/update/:id', [
   editor.validateDatabaseConnectionStatus.bind(this),
   editor.validateAuthenticationToken.bind(this),

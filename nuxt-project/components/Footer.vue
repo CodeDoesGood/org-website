@@ -42,25 +42,18 @@
 .footerLogo {
   font-size: 30px;
   color:white;
-  
+
 
 }
 .footer-distributed{
 	background-color: #0d0d0d;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-	box-sizing: border-box;
 	width: 100%;
 	text-align: left;
-	font: normal 16px sans-serif;
-
-	padding: 45px 50px;
-  margin-top: 80px;
-
+  font: normal 16px sans-serif;
   position: absolute;
   right: 0;
-  bottom: 0;
   left: 0;
-  padding: 3em;
+  padding: 1em;
 }
 
 .footer-distributed .footer-left p{
@@ -98,7 +91,7 @@
 	text-align: center;
 	line-height: 50px;
 
-	 margin-left: 10px; 
+	 margin-left: 10px;
 }
 
 .footer-left {

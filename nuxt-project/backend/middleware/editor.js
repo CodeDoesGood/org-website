@@ -130,6 +130,15 @@ function sendContentByIdForRequestingUser(req, res) {
     });
 }
 
+/**
+ * Pulls all row content from the database and sends it to the authenticated user.
+ */
+function sendAllContentDataToRequestingUser(req, res) {
+  databaseWrapper.getAllContentRows()
+    .then(result => res.status(200).send({ message: 'All content within table contents', content: { rows: result } }))
+    .catch(() => res.status(500).send({ error: 'Content gathering', description: 'Failed to gather all of contents table' }));
+}
+
 export default {
   validateDatabaseConnectionStatus,
   validateContent,
@@ -138,4 +147,5 @@ export default {
   validateAuthenticationToken,
   validateContentId,
   insertContentIntoDatabase,
+  sendAllContentDataToRequestingUser,
 };

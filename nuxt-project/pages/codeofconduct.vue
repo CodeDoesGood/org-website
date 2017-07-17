@@ -18,7 +18,7 @@
   export default {
     layout: 'default',
     asyncData() {
-      return client.editor.gatherById(1)
+      return client.editor.gatherById(2)
         .then(result => ({
           rawHtml: result.content.text,
           title: result.content.title,
@@ -31,8 +31,8 @@
 </script>
 
 <style>
-.htmlContent {
-  margin: 0% 10% 0% 10%;
-}
+  .htmlContent {
+    margin: 0% 10% 1% 10%;
+  }
 
 </style>
