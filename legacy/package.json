@@ -14,12 +14,14 @@
   "author": "Renato Camilio <renato@codedoesgood.org>",
   "dependencies": {
     "body-parser": "^1.13.3",
+    "demon": "^1.4.4",
     "errorhandler": "^1.4.2",
     "express": "^4.13.3",
     "jws": "^3.1.0",
     "lodash": "^4.17.5",
     "morgan": "^1.6.1",
-    "nodemon": "^1.17.2",
+    "no": "0.0.1",
+    "nodemon": "^1.17.3",
     "optimist": "^0.6.1",
     "swig": "^1.4.2"
   }
