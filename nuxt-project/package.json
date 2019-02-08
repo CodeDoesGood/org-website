@@ -9,36 +9,21 @@
     "dev": "backpack dev",
     "inspect": "node --inspect build/main.js",
     "start": "cross-env NODE_ENV=production node build/main.js",
-    "generate": "nuxt generate",
-    "lint": "eslint --ext .js --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "generate": "nuxt generate"
   },
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "body-parser": "^1.17.1",
+    "body-parser": "^1.18.3",
     "cross-env": "^5.0.0",
-    "express": "^4.15.2",
-    "knex": "^0.13.0",
-    "lodash": "^4.17.4",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
     "nodemailer": "^4.0.1",
-    "nuxt": "latest",
-    "sqlite3": "^3.1.8",
-    "superagent": "^3.5.2",
+    "nuxt": "^2.4.3",
+    "superagent": "^4.1.0",
     "winston": "^2.3.1"
   },
   "devDependencies": {
-    "babel-eslint": "^7.1.1",
-    "backpack-core": "^0.3.0",
+    "backpack-core": "^0.8.3",
     "chai": "^3.5.0",
-    "eslint": "^3.15.0",
-    "eslint-config-airbnb": "^15.0.1",
-    "eslint-loader": "^1.6.1",
-    "eslint-plugin-html": "^2.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^5.0.3",
-    "eslint-plugin-promise": "^3.4.1",
-    "eslint-plugin-react": "^7.0.1",
-    "eslint-plugin-standard": "^2.0.1",
-    "mocha": "^3.4.1"
+    "mocha": "^5.2.0"
   }
 }
